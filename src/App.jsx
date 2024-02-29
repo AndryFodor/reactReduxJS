@@ -7,8 +7,10 @@ import { SignIn } from "./components/SignIn/SignIn";
 import { SignUp } from "./components/SignUp/SignUp";
 import { Trip } from "./components/Trip/Trip";
 import { Bookings } from "./components/Bookings/Bookings";
+import { state } from "./store";
 
 function App() {
+  console.log(state);
   return (
     <>
       <Header />

@@ -141,3 +141,14 @@ select {
   cursor: pointer;
   appearance: none;
 }
+
+/* validate */
+
+.errorMsg{
+  color: red;
+  font-size: .7rem;
+}
+
+.input input.errorField {
+  border: red solid .1rem;
+}

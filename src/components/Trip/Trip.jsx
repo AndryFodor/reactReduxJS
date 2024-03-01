@@ -1,7 +1,7 @@
 export const Trip = () => {
     return (
-        <div>
+        <main>
             Trip
-        </div>
+        </main>
     )
 }

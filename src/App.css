@@ -41,13 +41,14 @@ body {
   line-height: 1.5;
   text-rendering: optimizespeed;
   background-color: var(--color-white);
+  position: relative;
 }
 
 main {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  margin-bottom: 11vh;
+  margin: 11.5vh auto;
 }
 
 img {

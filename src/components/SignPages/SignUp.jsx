@@ -15,7 +15,8 @@ export const SignUp = () => {
           password: "",
         }}
         handleSubmit={onSubmit}
-        inputTypes={["text", "email", "password"]}/>
+        inputTypes={["text", "email", "password"]}
+        SignMode={"up"}/>
       <SignFooter formType="in" />
     </main>
   );

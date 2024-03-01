@@ -14,6 +14,7 @@ export const SignIn = () => {
         initialValues={{ email: "", password: "" }}
         handleSubmit={handleSubmit}
         inputTypes={["email", "password"]}
+        SignMode={"in"}
       />
 
       <SignFooter formType="up" />

@@ -3,13 +3,13 @@ import { Label } from "./Label";
 import styles from "./Form.module.css";
 import { passwordValidate } from "../../../utils/validators";
 
-export const From = ({ initialValues, handleSubmit, inputTypes}) => {
+export const From = ({ initialValues, handleSubmit, inputTypes, SignMode}) => {
   let keys = Object.keys(initialValues);
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {({ errors, touched }) => (
         <Form className={styles["sign-form"]} autoComplete="off">
-          <h2 className={styles["sign-form__title"]}>Sign In</h2>
+          <h2 className={styles["sign-form__title"]}>Sign {SignMode}</h2>
           {keys.map((el, i) => {
             if (el === "password") {
               return (
@@ -49,7 +49,7 @@ export const From = ({ initialValues, handleSubmit, inputTypes}) => {
             }
           })}
           <button data-test-id="auth-submit" className="button" type="submit">
-            Sign In
+            Sign {SignMode}
           </button>
         </Form>
       )}

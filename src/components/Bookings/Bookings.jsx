@@ -1,7 +1,7 @@
 export const Bookings = () => {
     return (
-        <div>
+        <main>
             Bookings
-        </div>
+        </main>
     )
 }

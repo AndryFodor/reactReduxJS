@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { Label } from "./Label";
-import styles from "../Sign.module.css";
+import styles from "./Form.module.css";
 import { passwordValidate } from "../../../utils/validators";
 
 export const From = ({ initialValues, handleSubmit, inputTypes}) => {

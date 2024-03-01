@@ -15,7 +15,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="*" element = {<MainPage />}/>
+        <Route path="*" element = {<MainPage trips = {state.tripPage.trips}/>}/>
         <Route path="sign-in" element = {<SignIn />}/>
         <Route path="sign-up" element = {<SignUp />}/>
         <Route path="bookings" element = {<Bookings />}/>

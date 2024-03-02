@@ -3,8 +3,9 @@ import { SignFooter } from "./FormFooter/SignFooter";
 import { From } from "./Form/Form";
 
 export const SignIn = () => {
-  let handleSubmit = (values) => {
+  let handleSubmit = (values, actions) => {
     console.log(values);
+    actions.resetForm();
   };
   return (
     <main className={styles["sign-page"]}>

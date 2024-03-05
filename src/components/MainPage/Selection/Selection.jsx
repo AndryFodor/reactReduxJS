@@ -3,7 +3,7 @@ import styles from "./Selection.module.css";
 import { SelectLabel } from "./selectLabel";
 import { useEffect, useState } from "react";
 
-export const Selection = () => {
+export const Selection = ({changeTrips}) => {
   let [formValues, setFormValues] = useState({
     search: "",
     duration: "",
@@ -11,7 +11,7 @@ export const Selection = () => {
   });
 
   useEffect(() => {
-    console.log(formValues);
+    changeTrips(formValues);
   },[formValues])
 
   const handleChange = (e) => {

@@ -69,7 +69,7 @@ function App() {
     }
     return searchRes;
   };
-  const searchTripById = id => trips.filter(el => el.id === id);
+  const searchTripById = id => trips.filter(el => el.id === id)[0];
 
   const changeTrips = (searchDataObj) => {
     setTrips(searchTrips(searchDataObj));

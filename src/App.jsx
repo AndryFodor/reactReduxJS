@@ -69,11 +69,11 @@ function App() {
     }
     return searchRes;
   };
+  const searchTripById = id => trips.filter(el => el.id === id);
 
-  let changeTrips = (searchDataObj) => {
+  const changeTrips = (searchDataObj) => {
     setTrips(searchTrips(searchDataObj));
   };
-  console.log(trips);
   return (
     <>
       <Header />
@@ -85,7 +85,7 @@ function App() {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="bookings" element={<Bookings />} />
-        <Route path="trip/:tripId" element={<Trip />} />
+        <Route path="trip/:tripId" element={<Trip getTrip = {searchTripById}/>} />
       </Routes>
       <Footer />
     </>

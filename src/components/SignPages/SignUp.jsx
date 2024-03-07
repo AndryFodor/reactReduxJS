@@ -1,10 +1,13 @@
 import styles from "./Sign.module.css";
 import { SignFooter } from "./FormFooter/SignFooter";
 import { From } from "./Form/Form";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
+  let navigate = useNavigate();
   let onSubmit = (values, actions) => {
     console.log(values);
+    navigate("/")
     actions.resetForm();
   };
   return (

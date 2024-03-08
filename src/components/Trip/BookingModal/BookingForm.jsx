@@ -2,18 +2,20 @@ import { Form, Formik } from "formik";
 import { TripInfo } from "../../MainPage/TripCard/TripCardElements/TripInfo";
 import { Label } from "../../SignPages/Form/Label";
 import styles from "./BookingModal.module.css"
+import { notEarlierThenToday } from "../../../utils/validators";
 
-export const BookingForm = ({ trip }) => {
+export const BookingForm = ({ trip, closeModal }) => {
   const submitHandler = (values) => {
     values = {
       ...values,
       totalSum: values.guests * trip.price,
     };
     console.log(values);
+    closeModal();
   };
   return (
     <Formik initialValues={{ date: "", guests: "1" }} onSubmit={submitHandler}>
-      {({ values }) => (
+      {({ errors, touched, values }) => (
         <Form className={styles["book-trip-popup__form"]} autoComplete="off">
           <TripInfo
             dataTest={"popup"}
@@ -30,6 +32,12 @@ export const BookingForm = ({ trip }) => {
               type: "date",
               required: true,
             }}
+            validField={{
+                name: "date",
+                errors,
+                touched,
+                validator: notEarlierThenToday
+            }}
           />
           <Label
             title={"Number of guests"}
@@ -40,8 +48,8 @@ export const BookingForm = ({ trip }) => {
               min: "1",
               max: "10",
               required: true,
-            }}
-          />
+            }
+        }/>
           <span className={styles["book-trip-popup__total"]} >
             Total:
             <output

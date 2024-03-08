@@ -7,7 +7,8 @@ import { useState } from "react";
 
 export const Trip = ({ getTrip }) => {
   let [modal, setModal] = useState(false);
-  const bookingButton = () => (setModal(!modal));
+  const bookingModalOn = () => (setModal(true));
+  const bookingModalOff = () => (setModal(false));
   const { tripId } = useParams();
   let trip = getTrip(tripId);
   let { duration, level, title, description, image, price } = trip;
@@ -34,13 +35,13 @@ export const Trip = ({ getTrip }) => {
           <button
             data-test-id="trip-details-button"
             className= {styles.trip__button + " button"}
-            onClick={bookingButton}
+            onClick={bookingModalOn}
           >
             Book a trip
           </button>
         </div>
       </div>
-      {modal && <BookingModal trip = {trip} />}
+      {modal && <BookingModal trip = {trip} closeModal = {bookingModalOff}/>}
     </main>
     
   );

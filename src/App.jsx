@@ -88,7 +88,7 @@ function App() {
         />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
-        <Route path="bookings" element={<Bookings />} />
+        <Route path="bookings" element={<Bookings bookings = {bookings}/>} />
         <Route path="trip/:tripId" element={<Trip getTrip = {searchTripById} addBooking = {addBooking}/>} />
       </Routes>
       <Footer />

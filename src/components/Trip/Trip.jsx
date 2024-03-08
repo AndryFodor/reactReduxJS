@@ -6,10 +6,10 @@ import { BookingModal } from "./BookingModal/BookingModal";
 import { useState } from "react";
 
 export const Trip = ({ getTrip }) => {
+  const { tripId } = useParams();
   let [modal, setModal] = useState(false);
   const bookingModalOn = () => (setModal(true));
   const bookingModalOff = () => (setModal(false));
-  const { tripId } = useParams();
   let trip = getTrip(tripId);
   let { duration, level, title, description, image, price } = trip;
 

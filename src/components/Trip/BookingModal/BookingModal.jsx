@@ -1,7 +1,7 @@
 import { BookingForm } from "./BookingForm";
 import styles from "./BookingModal.module.css";
 
-export const BookingModal = ({ trip, closeModal }) => {
+export const BookingModal = ({ trip, closeModal, addBooking }) => {
   return (
     <div>
       <div className={styles.modal}>
@@ -16,7 +16,7 @@ export const BookingModal = ({ trip, closeModal }) => {
           >
             ×
           </button>
-          <BookingForm trip = {trip} closeModal = {closeModal}/>
+          <BookingForm trip = {trip} closeModal = {closeModal} addBooking={addBooking}/>
         </div>
       </div>
     </div>

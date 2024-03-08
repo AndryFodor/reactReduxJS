@@ -5,7 +5,7 @@ import { TripPrice } from "../MainPage/TripCard/TripCardElements/TripPrice";
 import { BookingModal } from "./BookingModal/BookingModal";
 import { useState } from "react";
 
-export const Trip = ({ getTrip }) => {
+export const Trip = ({ getTrip, addBooking }) => {
   const { tripId } = useParams();
   let [modal, setModal] = useState(false);
   const bookingModalOn = () => (setModal(true));
@@ -41,7 +41,7 @@ export const Trip = ({ getTrip }) => {
           </button>
         </div>
       </div>
-      {modal && <BookingModal trip = {trip} closeModal = {bookingModalOff}/>}
+      {modal && <BookingModal trip = {trip} closeModal = {bookingModalOff} addBooking={addBooking}/>}
     </main>
     
   );

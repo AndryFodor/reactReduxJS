@@ -4,13 +4,19 @@ import { Label } from "../../SignPages/Form/Label";
 import styles from "./BookingModal.module.css"
 import { notEarlierThenToday } from "../../../utils/validators";
 
-export const BookingForm = ({ trip, closeModal }) => {
+export const BookingForm = ({ trip, closeModal, addBooking }) => {
   const submitHandler = (values) => {
     values = {
       ...values,
-      totalSum: values.guests * trip.price,
+      date: new Date(values.date).toISOString(),
+      totalPrice: values.guests * trip.price,
+      trip: {
+        title: trip.title,
+        duration: trip.duration,
+        price: trip.price
+      }
     };
-    console.log(values);
+    addBooking(values);
     closeModal();
   };
   return (

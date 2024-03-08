@@ -12,6 +12,10 @@ import { useState } from "react";
 
 function App() {
   let [trips, setTrips] = useState(state.tripPage.trips);
+  let [bookings, setBookings] = useState([]);
+  const addBooking = newBooking => {
+    setBookings([...bookings, newBooking])
+  }
 
   const searchByName = (trips, title) =>
     trips.filter((el) =>
@@ -85,7 +89,7 @@ function App() {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="bookings" element={<Bookings />} />
-        <Route path="trip/:tripId" element={<Trip getTrip = {searchTripById}/>} />
+        <Route path="trip/:tripId" element={<Trip getTrip = {searchTripById} addBooking = {addBooking}/>} />
       </Routes>
       <Footer />
     </>

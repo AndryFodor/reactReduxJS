@@ -7,11 +7,11 @@ import { SignIn } from "./components/SignPages/SignIn";
 import { SignUp } from "./components/SignPages/SignUp";
 import { Trip } from "./components/Trip/Trip";
 import { Bookings } from "./components/Bookings/Bookings";
-import { state } from "./store";
 import { useState } from "react";
+import tripsState from "./store/trips.json" 
 
 function App() {
-  let [trips, setTrips] = useState(state.tripPage.trips);
+  let [trips, setTrips] = useState(tripsState);
   let [bookings, setBookings] = useState([]);
   const addBooking = (newBooking) => {
     let sortedBooking = sortBookings([...bookings, newBooking]);
@@ -72,34 +72,34 @@ function App() {
     if (searchData.search && searchData.duration && searchData.level) {
       searchRes = searchByDuration(
         searchByLevel(
-          searchByName(state.tripPage.trips, searchData.search),
+          searchByName(tripsState, searchData.search),
           searchData.level
         ),
         duration
       );
     } else if (searchData.search && searchData.duration) {
       searchRes = searchByDuration(
-        searchByName(state.tripPage.trips, searchData.search),
+        searchByName(tripsState, searchData.search),
         duration
       );
     } else if (searchData.search && searchData.level) {
       searchRes = searchByLevel(
-        searchByName(state.tripPage.trips, searchData.search),
+        searchByName(tripsState, searchData.search),
         searchData.level
       );
     } else if (searchData.level && searchData.duration) {
       searchRes = searchByDuration(
-        searchByLevel(state.tripPage.trips, searchData.level),
+        searchByLevel(tripsState, searchData.level),
         duration
       );
     } else if (searchData.search) {
-      searchRes = searchByName(state.tripPage.trips, searchData.search);
+      searchRes = searchByName(tripsState, searchData.search);
     } else if (searchData.level) {
-      searchRes = searchByLevel(state.tripPage.trips, searchData.level);
+      searchRes = searchByLevel(tripsState, searchData.level);
     } else if (searchData.duration) {
-      searchRes = searchByDuration(state.tripPage.trips, duration);
+      searchRes = searchByDuration(tripsState, duration);
     } else {
-      searchRes = state.tripPage.trips;
+      searchRes = tripsState;
     }
     return searchRes;
   };

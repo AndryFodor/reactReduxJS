@@ -11,9 +11,9 @@ export const MainPage = ({ trips, changeTrips}) => {
       <section className={styles.trips}>
         <h2 className="visually-hidden">Trips List</h2>
         <ul className={styles["trip-list"]}>
-          {trips.map((trip, i) => (
+          {trips.length !== 0 ? trips.map((trip, i) => (
             <TripCard key={i} {...trip} />
-          ))}
+          )) : <p className={styles["trip-list__empty"]}>Such trips not found</p>}
         </ul>
       </section>
     </main>

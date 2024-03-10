@@ -2,7 +2,6 @@ import { BookingCard } from "./BookingCard";
 import styles from "./Bookings.module.css";
 
 export const Bookings = ({ bookings, removeBooking }) => {
-  console.log(bookings);
   return (
     <main className={styles["bookings-page"]}>
       <h1 className="visually-hidden">Travel App</h1>

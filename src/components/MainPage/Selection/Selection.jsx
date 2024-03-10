@@ -2,8 +2,11 @@ import { Field, Form, Formik } from "formik";
 import styles from "./Selection.module.css";
 import { SelectLabel } from "./selectLabel";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeTrips } from "../../../store/tripsSlice";
 
-export const Selection = ({changeTrips}) => {
+export const Selection = () => {
+  const dispatch = useDispatch();
   let [formValues, setFormValues] = useState({
     search: "",
     duration: "",
@@ -11,7 +14,7 @@ export const Selection = ({changeTrips}) => {
   });
 
   useEffect(() => {
-    changeTrips(formValues);
+    dispatch(changeTrips(formValues));
   },[formValues])
 
   const handleChange = (e) => {

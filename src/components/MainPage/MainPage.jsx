@@ -1,12 +1,15 @@
+import { useSelector } from "react-redux";
 import styles from "./MainPage.module.css";
 import { Selection } from "./Selection/Selection";
 import { TripCard } from "./TripCard/TripCard";
 
-export const MainPage = ({ trips, changeTrips}) => {
+export const MainPage = () => {
+  const trips = useSelector((state => state.trips.trips))
+  
   return (
     <main>
       <h1 className="visually-hidden">Travel App</h1>
-      <Selection changeTrips={changeTrips}/>
+      <Selection/>
 
       <section className={styles.trips}>
         <h2 className="visually-hidden">Trips List</h2>

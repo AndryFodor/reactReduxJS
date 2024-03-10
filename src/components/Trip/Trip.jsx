@@ -4,13 +4,18 @@ import { TripInfo } from "../MainPage/TripCard/TripCardElements/TripInfo";
 import { TripPrice } from "../MainPage/TripCard/TripCardElements/TripPrice";
 import { BookingModal } from "./BookingModal/BookingModal";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTripById } from "../../store/tripsSlice";
 
-export const Trip = ({ getTrip, addBooking }) => {
+export const Trip = ({ addBooking }) => {
+  const trip = useSelector(state => state.trips.currentTrip);
+  const dispatch = useDispatch();
   const { tripId } = useParams();
+  
   let [modal, setModal] = useState(false);
   const bookingModalOn = () => (setModal(true));
   const bookingModalOff = () => (setModal(false));
-  let trip = getTrip(tripId);
+  dispatch(setTripById(tripId));
   let { duration, level, title, description, image, price } = trip;
 
   return (

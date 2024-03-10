@@ -1,6 +1,6 @@
 import styles from "./Bookings.module.css";
 
-export const BookingCard = ({title, guests, date, totalPrice}) => (
+export const BookingCard = ({title, guests, date, totalPrice, removeBooking}) => (
   <li data-test-id="booking" className={styles.booking}>
     <h3 data-test-id="booking-title" className={styles.booking__title}>
       {title}
@@ -18,6 +18,7 @@ export const BookingCard = ({title, guests, date, totalPrice}) => (
       data-test-id="booking-cancel"
       className={styles.booking__cancel}
       title="Cancel booking"
+      onClick={removeBooking}
     >
       <span className="visually-hidden">Cancel booking</span>×
     </button>

@@ -1,7 +1,7 @@
 import { BookingCard } from "./BookingCard";
 import styles from "./Bookings.module.css";
 
-export const Bookings = ({ bookings }) => {
+export const Bookings = ({ bookings, removeBooking }) => {
   console.log(bookings);
   return (
     <main className={styles["bookings-page"]}>
@@ -14,6 +14,7 @@ export const Bookings = ({ bookings }) => {
             totalPrice={el.totalPrice}
             title={el.trip.title}
             key={idx}
+            removeBooking = {removeBooking(el.id)}
           />
         )) : <p className={styles.booking__noBookings}>No bookings yet</p>}
       </ul>

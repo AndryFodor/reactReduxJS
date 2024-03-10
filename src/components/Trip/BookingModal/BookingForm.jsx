@@ -3,6 +3,7 @@ import { TripInfo } from "../../MainPage/TripCard/TripCardElements/TripInfo";
 import { Label } from "../../SignPages/Form/Label";
 import styles from "./BookingModal.module.css"
 import { notEarlierThenToday } from "../../../utils/validators";
+import { v4 } from "uuid";
 
 export const BookingForm = ({ trip, closeModal, addBooking }) => {
   const submitHandler = (values) => {
@@ -14,10 +15,12 @@ export const BookingForm = ({ trip, closeModal, addBooking }) => {
         title: trip.title,
         duration: trip.duration,
         price: trip.price
-      }
+      },
+      id: v4()
     };
     addBooking(values);
     closeModal();
+    
   };
   return (
     <Formik initialValues={{ date: "", guests: "1" }} onSubmit={submitHandler}>

@@ -13,9 +13,36 @@ import { useState } from "react";
 function App() {
   let [trips, setTrips] = useState(state.tripPage.trips);
   let [bookings, setBookings] = useState([]);
-  const addBooking = newBooking => {
-    setBookings([...bookings, newBooking])
-  }
+  const addBooking = (newBooking) => {
+    let sortedBooking = sortBookings([...bookings, newBooking]);
+    setBookings(sortedBooking);
+  };
+  const deleteBooking = (id) => () => {
+    setBookings(bookings.filter((el) => el.id !== id));
+  };
+
+  const sortBookings = (bookings) => {
+    const length = bookings.length,
+      res = [...bookings];
+    for (let i = 0; i < length - 1; i++) {
+      for (let j = 0; j < length - 1 - i; j++) {
+        const date1 = res[j].date.slice(0, 10);
+        const date2 = res[j + 1].date.slice(0, 10);
+        const [year1, month1, day1] = date1.split("-").map(Number);
+        const [year2, month2, day2] = date2.split("-").map(Number);
+        if (
+          year1 > year2 ||
+          (year1 === year2 && month1 > month2) ||
+          (year1 === year2 && month1 === month2 && day1 > day2)
+        ) {
+          const temp = res[j];
+          res[j] = res[j + 1];
+          res[j + 1] = temp;
+        }
+      }
+    }
+    return res;
+  };
 
   const searchByName = (trips, title) =>
     trips.filter((el) =>
@@ -44,7 +71,10 @@ function App() {
     let searchRes = [];
     if (searchData.search && searchData.duration && searchData.level) {
       searchRes = searchByDuration(
-        searchByLevel(searchByName(state.tripPage.trips, searchData.search), searchData.level),
+        searchByLevel(
+          searchByName(state.tripPage.trips, searchData.search),
+          searchData.level
+        ),
         duration
       );
     } else if (searchData.search && searchData.duration) {
@@ -73,7 +103,7 @@ function App() {
     }
     return searchRes;
   };
-  const searchTripById = id => trips.filter(el => el.id === id)[0];
+  const searchTripById = (id) => trips.filter((el) => el.id === id)[0];
 
   const changeTrips = (searchDataObj) => {
     setTrips(searchTrips(searchDataObj));
@@ -88,8 +118,16 @@ function App() {
         />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
-        <Route path="bookings" element={<Bookings bookings = {bookings}/>} />
-        <Route path="trip/:tripId" element={<Trip getTrip = {searchTripById} addBooking = {addBooking}/>} />
+        <Route
+          path="bookings"
+          element={
+            <Bookings bookings={bookings} removeBooking={deleteBooking} />
+          }
+        />
+        <Route
+          path="trip/:tripId"
+          element={<Trip getTrip={searchTripById} addBooking={addBooking} />}
+        />
       </Routes>
       <Footer />
     </>

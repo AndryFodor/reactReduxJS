@@ -8,10 +8,12 @@ const tripsSlice = createSlice({
         currentTrip: null
     },
     reducers: {
+        // тут в action.payload має міститися об'єкт з полями duration, level i search (введена назва подорожі)
         changeTrips(state, action) {
             state.trips = searchTrips(action.payload);
         },
-        setTripById(state, action){
+        // тут в action.payload має бути id тої подорожі, яку треба відобразити на сторінці
+        setTripById(state, action) {
             state.currentTrip = state.trips.filter((el) => el.id === action.payload)[0];
         }
     }
@@ -78,6 +80,6 @@ const searchTrips = (searchData) => {
     return searchRes;
 };
 
-export const {changeTrips, setTripById} = tripsSlice.actions
+export const { changeTrips, setTripById } = tripsSlice.actions
 
 export default tripsSlice.reducer

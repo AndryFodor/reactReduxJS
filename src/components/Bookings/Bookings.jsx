@@ -1,7 +1,12 @@
+import { useDispatch, useSelector } from "react-redux";
 import { BookingCard } from "./BookingCard";
 import styles from "./Bookings.module.css";
+import { deleteBooking } from "../../store/bookingsSlice";
 
-export const Bookings = ({ bookings, removeBooking }) => {
+export const Bookings = () => {
+  let bookings = useSelector(state => state.bookings.bookings);
+  const dispatch = useDispatch();
+
   return (
     <main className={styles["bookings-page"]}>
       <h1 className="visually-hidden">Travel App</h1>
@@ -13,7 +18,7 @@ export const Bookings = ({ bookings, removeBooking }) => {
             totalPrice={el.totalPrice}
             title={el.trip.title}
             key={idx}
-            removeBooking = {removeBooking(el.id)}
+            removeBooking = {() => {dispatch(deleteBooking(el.id))}}
           />
         )) : <p className={styles.booking__noBookings}>No bookings yet</p>}
       </ul>

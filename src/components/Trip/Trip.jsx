@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripById } from "../../store/tripsSlice";
 
-export const Trip = ({ addBooking }) => {
+export const Trip = () => {
   const trip = useSelector(state => state.trips.currentTrip);
   const dispatch = useDispatch();
   const { tripId } = useParams();
@@ -46,7 +46,7 @@ export const Trip = ({ addBooking }) => {
           </button>
         </div>
       </div>
-      {modal && <BookingModal trip = {trip} closeModal = {bookingModalOff} addBooking={addBooking}/>}
+      {modal && <BookingModal trip = {trip} closeModal = {bookingModalOff}/>}
     </main>
     
   );

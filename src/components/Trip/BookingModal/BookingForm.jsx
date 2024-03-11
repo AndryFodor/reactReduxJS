@@ -4,8 +4,11 @@ import { Label } from "../../SignPages/Form/Label";
 import styles from "./BookingModal.module.css"
 import { notEarlierThenToday } from "../../../utils/validators";
 import { v4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { addBookings } from "../../../store/bookingsSlice";
 
-export const BookingForm = ({ trip, closeModal, addBooking }) => {
+export const BookingForm = ({ trip, closeModal }) => {
+  const dispatch = useDispatch();
   const submitHandler = (values) => {
     values = {
       ...values,
@@ -18,7 +21,7 @@ export const BookingForm = ({ trip, closeModal, addBooking }) => {
       },
       id: v4()
     };
-    addBooking(values);
+    dispatch(addBookings(values))
     closeModal();
     
   };

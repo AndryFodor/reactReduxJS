@@ -1,0 +1,8 @@
+.sign-form__link {
+    color: var(--color-blue-200);
+    transition: 0.1s color ease;
+}
+
+.sign-form__link:hover {
+    color: var(--color-blue-300);
+}

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BookingCard } from "./BookingCard";
 import styles from "./Bookings.module.css";
-import { deleteBooking } from "../../store/bookingsSlice";
+import { deleteBooking } from "../../store/slices/bookingsSlice";
 
 export const Bookings = () => {
-  let bookings = useSelector(state => state.bookings.bookings);
+  let bookings = useSelector(state => state.bookingsData.bookings);
   const dispatch = useDispatch();
 
   return (

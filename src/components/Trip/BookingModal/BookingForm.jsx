@@ -5,7 +5,7 @@ import styles from "./BookingModal.module.css"
 import { notEarlierThenToday } from "../../../utils/validators";
 import { v4 } from "uuid";
 import { useDispatch } from "react-redux";
-import { addBookings } from "../../../store/bookingsSlice";
+import { addBookings } from "../../../store/slices/bookingsSlice";
 
 export const BookingForm = ({ trip, closeModal }) => {
   const dispatch = useDispatch();

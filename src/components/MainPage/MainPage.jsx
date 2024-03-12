@@ -4,7 +4,7 @@ import { Selection } from "./Selection/Selection";
 import { TripCard } from "./TripCard/TripCard";
 
 export const MainPage = () => {
-  const trips = useSelector((state => state.trips.trips))
+  const trips = useSelector((state => state.tripsData.trips))
   
   return (
     <main>

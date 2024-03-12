@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tripsReducer from './tripsSlice'
-import bookingsReducer from './bookingsSlice'
+import tripsReducer from './slices/tripsSlice'
+import bookingsReducer from './slices/bookingsSlice'
 
 export default configureStore({
     reducer: {
-        trips: tripsReducer,
-        bookings: bookingsReducer
+        tripsData: tripsReducer,
+        bookingsData: bookingsReducer
     }
 })

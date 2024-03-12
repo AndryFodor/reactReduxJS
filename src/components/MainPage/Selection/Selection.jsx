@@ -3,7 +3,8 @@ import styles from "./Selection.module.css";
 import { SelectLabel } from "./selectLabel";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeTrips } from "../../../store/tripsSlice";
+import { changeTrips } from "../../../store/slices/tripsSlice";
+
 
 export const Selection = () => {
   const dispatch = useDispatch();

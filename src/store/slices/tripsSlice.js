@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import trips from "./trips.json"
+import trips from "../trips.json"
 
 const tripsSlice = createSlice({
     name: "tripsReducer",
